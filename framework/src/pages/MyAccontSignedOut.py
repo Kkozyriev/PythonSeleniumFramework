@@ -3,11 +3,14 @@ from framework.src.pages.locators import MyAccountSignedOutLocator
 from framework.src.SeleniumExtended import SeleniumExtended
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+
+
 class MyAccountSignedOut(MyAccountSignedOutLocator):
 
     def __init__(self, driver):
         self.driver = driver
         self.sl = SeleniumExtended(self.driver)
+
     def go_to_my_account(self):
         pass
 
@@ -20,4 +23,3 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
     def click_login_button(self):
         self.sl.wait_and_click(self.LOGIN_BTN)
 
-        s
