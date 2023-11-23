@@ -19,3 +19,5 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
 
     def click_login_button(self):
         self.sl.wait_and_click(self.LOGIN_BTN)
+
+        s
