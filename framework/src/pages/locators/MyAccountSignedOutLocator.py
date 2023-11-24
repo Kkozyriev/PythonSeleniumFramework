@@ -4,3 +4,5 @@ class MyAccountSignedOutLocator:
     LOGIN_USER_NAME = (By.ID, 'username')
     LOGIN_PASSWORD = (By.ID, 'password')
     LOGIN_BTN = (By.CSS_SELECTOR, 'button[value="Log in"]')
+
+    ERRORS_UL = (By.CSS_SELECTOR, 'ul.woocommerce-error')
