@@ -5,7 +5,9 @@ from framework.src.pages.MyAccontSignedOut import MyAccountSignedOut
 class TestLoginNegative:
     @pytest.mark.tcid12
     def test_login_none_existing_user(self):
-
+        print("*********")
+        print("TEST LOGIN NON EXISTING")
+        print("**********")
         my_account = MyAccountSignedOut(self.driver)
         my_account.go_to_my_account()
         my_account.input_login_username('asdkasjdl')
