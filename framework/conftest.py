@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options as ChOptions
 from selenium.webdriver.firefox.options import Options as FFoptions
 import pytest
 import os
+import time
 
 
 @pytest.fixture(scope="class")
@@ -42,6 +43,7 @@ def init_driver(request):
         driver = webdriver.Firefox(options=ff_options)
 
     request.cls.driver = driver
+
     yield
     driver.quit()
 
