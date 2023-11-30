@@ -11,7 +11,7 @@ class TestLoginNegative:
         my_account = MyAccountSignedOut(self.driver)
         my_account.go_to_my_account()
         my_account.input_login_username('asdkasjdl')
-        my_account.input_login_password('asdasdasdas')
+        my_account.input_login_password('A2@sdasdasdas')
         my_account.click_login_button()
 
         #verify error message
