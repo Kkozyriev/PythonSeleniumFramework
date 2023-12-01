@@ -1,6 +1,7 @@
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
 class SeleniumExtended:
 
     def __init__(self, driver):
@@ -28,3 +29,15 @@ class SeleniumExtended:
         timeout = timeout if timeout else self.default_timeout
         WebDriverWait(self.driver, timeout).until(
             EC.visibility_of_element_located(locator))
+
+    def wait_and_get_elements(self, locator, timeout=None, err=None):
+        timeout = timeout if timeout else self.default_timeout
+        err = err if err else (f"Unable to find elements located by '{locator}"
+                               f"after timeout of {timeout}")
+        try:
+            elements = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_all_elements_located(locator)
+            )
+        except TimeoutException:
+            raise TimeoutException(err)
+        return elements

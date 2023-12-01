@@ -2,6 +2,9 @@ import time
 import pytest
 from framework.src.pages.HomePage import HomePage
 from framework.src.pages.Header import Header
+from framework.src.pages.CartPage import CartPage
+from framework.src.configs.GeneralConfigs import GeneralConfigs
+
 
 @pytest.mark.usefixtures('init_driver')
 class TestEndToEndCheckoutGuestUser:
@@ -10,6 +13,7 @@ class TestEndToEndCheckoutGuestUser:
 
         home_p = HomePage(self.driver)
         header = Header(self.driver)
+        cart_p = CartPage(self.driver)
 
         # go to home page
         home_p.go_to_home_page()
@@ -17,21 +21,27 @@ class TestEndToEndCheckoutGuestUser:
         # add 1 item to cart
         home_p.click_first_add_to_cart_button()
 
-        #make sure the cart is updated before going to cart
+        # make sure the cart is updated before going to cart
         header.wait_until_cart_item_count(1)
+
         # go to cart
         header.click_on_cart_on_right_header()
-        time.sleep(6)
-        #apply free coupon
+        product_names = cart_p.get_all_product_names_in_cart()
+        assert len(product_names) == 1, f"Expected 1 item in cart but found {len(product_names)}"
 
-        #select gree shipping
+        # apply free coupon
+        coupon_code = GeneralConfigs.FREE_COUPON
+        cart_p.apply_coupon(coupon_code)
+        time.sleep(3)
 
-        #click on checkout
+        # select gree shipping
 
-        #fill in form
+        # click on checkout
 
-        #click on place order
+        # fill in form
 
-        #verify order is received
+        # click on place order
 
-        #verife order is recorderd in db (vuia SQL or via API)
+        # verify order is received
+
+        # verify order is recorded in db (via SQL or via API)
