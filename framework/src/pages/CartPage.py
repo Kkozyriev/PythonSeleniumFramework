@@ -32,3 +32,7 @@ class CartPage(CartPageLocators):
         self.input_coupon(coupon_code)
         self.click_apply_coupon()
         self.get_displayed_message()
+
+
+    def click_on_proceed_to_checkout(self):
+        self.sl.wait_and_click(self.PROCEED_TO_CHECKOUT_BTN)

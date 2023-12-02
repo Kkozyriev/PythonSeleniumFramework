@@ -8,3 +8,4 @@ class CartPageLocators:
     COUPON_FIELD = (By.ID, 'wc-block-components-totals-coupon__input-0')
     APPLY_COUPON_BTN = (By.CSS_SELECTOR, '.wc-block-components-totals-coupon__button')
     COUPON_APPLIED_PUSH_UP = (By.CSS_SELECTOR, 'div.wc-block-components-notice-banner__content')
+    PROCEED_TO_CHECKOUT_BTN = (By.CSS_SELECTOR, 'a.components-button')

@@ -19,6 +19,9 @@ def generate_random_email_and_password(domain=None, email_prefix=None):
     random_password = random_string = "".join(random.choices(string.ascii_letters, k=random_password_length))
 
     random_info = {"email": email, "password": random_password}
-
     return random_info
+
+
+
+
 

@@ -3,8 +3,8 @@ import pytest
 from framework.src.pages.HomePage import HomePage
 from framework.src.pages.Header import Header
 from framework.src.pages.CartPage import CartPage
+from framework.src.pages.CheckoutPage import CheckoutPage
 from framework.src.configs.GeneralConfigs import GeneralConfigs
-
 
 @pytest.mark.usefixtures('init_driver')
 class TestEndToEndCheckoutGuestUser:
@@ -14,6 +14,9 @@ class TestEndToEndCheckoutGuestUser:
         home_p = HomePage(self.driver)
         header = Header(self.driver)
         cart_p = CartPage(self.driver)
+        checkout_p = CheckoutPage(self.driver)
+
+
 
         # go to home page
         home_p.go_to_home_page()
@@ -32,15 +35,15 @@ class TestEndToEndCheckoutGuestUser:
         # apply free coupon
         coupon_code = GeneralConfigs.FREE_COUPON
         cart_p.apply_coupon(coupon_code)
-        time.sleep(3)
-
-        # select gree shipping
 
         # click on checkout
+        cart_p.click_on_proceed_to_checkout()
 
         # fill in form
+        checkout_p.fill_in_billing_info()
 
         # click on place order
+        checkout_p.click_place_order()
 
         # verify order is received
 
