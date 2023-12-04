@@ -4,7 +4,9 @@ from framework.src.pages.HomePage import HomePage
 from framework.src.pages.Header import Header
 from framework.src.pages.CartPage import CartPage
 from framework.src.pages.CheckoutPage import CheckoutPage
+from framework.src.pages.OrderConfirmationPage import OrderConfirmationPage
 from framework.src.configs.GeneralConfigs import GeneralConfigs
+
 
 @pytest.mark.usefixtures('init_driver')
 class TestEndToEndCheckoutGuestUser:
@@ -15,8 +17,7 @@ class TestEndToEndCheckoutGuestUser:
         header = Header(self.driver)
         cart_p = CartPage(self.driver)
         checkout_p = CheckoutPage(self.driver)
-
-
+        order_confirmation_p = OrderConfirmationPage(self.driver)
 
         # go to home page
         home_p.go_to_home_page()
@@ -41,10 +42,14 @@ class TestEndToEndCheckoutGuestUser:
 
         # fill in form
         checkout_p.fill_in_billing_info()
-
         # click on place order
         checkout_p.click_place_order()
 
         # verify order is received
+        order_confirmation_p.verify_order_confirmation_page_loaded()
 
         # verify order is recorded in db (via SQL or via API)
+        order_num = order_confirmation_p.get_order_number()
+        print('*********')
+        print(order_num)
+        print('*********')
