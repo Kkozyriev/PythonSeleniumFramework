@@ -6,6 +6,7 @@ from framework.src.pages.CartPage import CartPage
 from framework.src.pages.CheckoutPage import CheckoutPage
 from framework.src.pages.OrderConfirmationPage import OrderConfirmationPage
 from framework.src.configs.GeneralConfigs import GeneralConfigs
+from framework.src.helpers.database_helpers import get_order_from_db_by_order_no
 
 
 @pytest.mark.usefixtures('init_driver')
@@ -53,3 +54,12 @@ class TestEndToEndCheckoutGuestUser:
         print('*********')
         print(order_num)
         print('*********')
+
+        db_order = get_order_from_db_by_order_no(order_num)
+        assert db_order, (f"After creating order with FE, not found in DB."
+                          f"Order no:{order_num}")
+
+        print("")
+        print("******")
+        print("PASS")
+        print("******")
