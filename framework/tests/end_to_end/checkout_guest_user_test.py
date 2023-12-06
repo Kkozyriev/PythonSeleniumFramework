@@ -6,13 +6,14 @@ from framework.src.pages.CartPage import CartPage
 from framework.src.pages.CheckoutPage import CheckoutPage
 from framework.src.pages.OrderConfirmationPage import OrderConfirmationPage
 from framework.src.configs.GeneralConfigs import GeneralConfigs
-from framework.src.helpers.database_helpers import get_order_from_db_by_order_no
+from framework.src.configs.TestDataConfigs import TestDataConfigs
+from framework.src.helpers.DatabaseHelpers import get_order_from_db_by_order_no
 
 
 @pytest.mark.usefixtures('init_driver')
-class TestEndToEndCheckoutGuestUser:
+class TestCheckoutGuestUser:
     @pytest.mark.tcid33
-    def test_end_to_end_checkout_guest_user(self):
+    def test_checkout_guest_user(self):
 
         home_p = HomePage(self.driver)
         header = Header(self.driver)
@@ -35,7 +36,7 @@ class TestEndToEndCheckoutGuestUser:
         assert len(product_names) == 1, f"Expected 1 item in cart but found {len(product_names)}"
 
         # apply free coupon
-        coupon_code = GeneralConfigs.FREE_COUPON
+        coupon_code = TestDataConfigs.FREE_COUPON
         cart_p.apply_coupon(coupon_code)
 
         # click on checkout
@@ -43,6 +44,7 @@ class TestEndToEndCheckoutGuestUser:
 
         # fill in form
         checkout_p.fill_in_billing_info()
+
         # click on place order
         checkout_p.click_place_order()
 

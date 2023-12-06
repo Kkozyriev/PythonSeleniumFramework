@@ -1,5 +1,5 @@
 import pymysql
-from framework.src.helpers.config_helpers import get_database_credentials
+from framework.src.helpers.GeneralHelpers import get_database_credentials
 from framework.src.configs.GeneralConfigs import GeneralConfigs
 
 def read_from_db(sql):

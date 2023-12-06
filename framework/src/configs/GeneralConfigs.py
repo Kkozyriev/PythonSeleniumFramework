@@ -1,6 +1,6 @@
 
 class GeneralConfigs:
 
-    FREE_COUPON = 'qa100'
+    ENV = 'local'
     DATABASE_SCHEMA = 'quicksitedb'
     DATABASE_TABLE_PREFIX = 'wp_'

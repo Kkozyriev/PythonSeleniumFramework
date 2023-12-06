@@ -1,6 +1,6 @@
 from framework.src.SeleniumExtended import SeleniumExtended
 from framework.src.pages.locators.CheckoutPageLocators import CheckoutPageLocators
-from framework.src.helpers.generic_helpers import generate_random_email_and_password
+from framework.src.helpers.GenericHelpers import generate_random_email_and_password
 
 
 class CheckoutPage(CheckoutPageLocators):

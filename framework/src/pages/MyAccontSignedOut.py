@@ -1,7 +1,7 @@
 
 from framework.src.pages.locators.MyAccountSignedOutLocator import MyAccountSignedOutLocator
 from framework.src.SeleniumExtended import SeleniumExtended
-from framework.src.helpers.config_helpers import get_base_url
+from framework.src.helpers.GeneralHelpers import get_base_url
 import logging as logger
 
 

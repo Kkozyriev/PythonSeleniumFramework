@@ -2,7 +2,7 @@
 import pytest
 from framework.src.pages.MyAccontSignedOut import MyAccountSignedOut
 from framework.src.pages.MyAccountSignedIn import  MyAccountSignedIn
-from framework.src.helpers.generic_helpers import generate_random_email_and_password
+from framework.src.helpers.GenericHelpers import generate_random_email_and_password
 
 @pytest.mark.usefixtures("init_driver")
 class TestRegisterNewUser:
