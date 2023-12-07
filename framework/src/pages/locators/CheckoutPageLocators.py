@@ -14,5 +14,5 @@ class CheckoutPageLocators:
     BILLING_CITY = (By.ID, 'billing-city')
     BILLING_PHONE = (By.ID, 'billing-phone')
 
-    PLACE_ORDER_BTN = (By.CSS_SELECTOR, 'button.wc-block-components-checkout-place-order-button')
+    PLACE_ORDER_BTN = (By.CSS_SELECTOR, 'button.components-button')
 

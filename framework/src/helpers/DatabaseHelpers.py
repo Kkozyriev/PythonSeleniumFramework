@@ -2,6 +2,7 @@ import pymysql
 from framework.src.helpers.GeneralHelpers import get_database_credentials
 from framework.src.configs.GeneralConfigs import GeneralConfigs
 
+
 def read_from_db(sql):
     db_creds = get_database_credentials()
 
@@ -22,7 +23,6 @@ def read_from_db(sql):
 
 
 def get_order_from_db_by_order_no(order_no):
-
     schema = GeneralConfigs.DATABASE_SCHEMA
     table_prefix = GeneralConfigs.DATABASE_TABLE_PREFIX
 
@@ -31,4 +31,3 @@ def get_order_from_db_by_order_no(order_no):
     db_order = read_from_db(sql)
 
     return db_order
-
