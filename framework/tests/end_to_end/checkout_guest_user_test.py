@@ -5,7 +5,6 @@ from framework.src.pages.Header import Header
 from framework.src.pages.CartPage import CartPage
 from framework.src.pages.CheckoutPage import CheckoutPage
 from framework.src.pages.OrderConfirmationPage import OrderConfirmationPage
-from framework.src.configs.GeneralConfigs import GeneralConfigs
 from framework.src.configs.TestDataConfigs import TestDataConfigs
 from framework.src.helpers.DatabaseHelpers import get_order_from_db_by_order_no
 
@@ -14,13 +13,11 @@ from framework.src.helpers.DatabaseHelpers import get_order_from_db_by_order_no
 class TestCheckoutGuestUser:
     @pytest.mark.tcid33
     def test_checkout_guest_user(self):
-
         home_p = HomePage(self.driver)
         header = Header(self.driver)
         cart_p = CartPage(self.driver)
         checkout_p = CheckoutPage(self.driver)
         order_confirmation_p = OrderConfirmationPage(self.driver)
-
         # go to home page
         home_p.go_to_home_page()
 
@@ -46,6 +43,10 @@ class TestCheckoutGuestUser:
         checkout_p.fill_in_billing_info()
 
         # click on place order
+        # Here, I used time.sleep() because during testing, a bug was identified that prevented
+        # clicking the 'Place order' button, even though it is clickable.
+
+        time.sleep(5)
         checkout_p.click_place_order()
 
         # verify order is received
